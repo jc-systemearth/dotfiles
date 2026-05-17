@@ -60,10 +60,9 @@ STRAP_DOTFILES_URL="$(pwd)" bash ./bootstrap.sh
 4. Installs packages from `Brewfile` (auto), then prompts for `Brewfile.work` and `Brewfile.optional`
 5. Clones the dotfiles as a bare repo to `~/.cfg` and checks out into `$HOME`
 6. Writes git identity to `~/.gitconfig` (after the checkout, so the values survive it)
-7. Applies macOS defaults via `scripts/macos-setup.sh`
-8. Sets a custom Alacritty icon (if `fileicon` is installed)
-9. Installs `nvm`
-10. Prints a 5-step post-install checklist
+7. Applies macOS defaults via `scripts/macos-setup.sh` (includes iTerm2 Catppuccin theme import)
+8. Installs `nvm`
+9. Prints a 5-step post-install checklist
 
 Things intentionally NOT done (compared to the upstream `handshou/dotfiles`):
 
@@ -79,7 +78,7 @@ Things intentionally NOT done (compared to the upstream `handshou/dotfiles`):
 After bootstrap completes the script prints these 5 steps:
 
 1. **Add SSH key to GitHub** — `pbcopy < ~/.ssh/id_ed25519.pub`, paste at https://github.com/settings/ssh/new, test with `ssh -T git@github.com`, then switch the dotfiles remote: `config remote set-url origin git@github.com:<you>/dotfiles.git`
-2. **Set up Alacritty** — `alacritty migrate` to update config to the latest format
+2. **Apply iTerm2 Catppuccin theme** — iTerm2 → Settings → Profiles → Colors → Color Presets → `catppuccin-mocha`
 3. **Install tmux plugins** — open tmux, hit `prefix + I` (Ctrl+a, then Shift+I) to install via TPM
 4. **Install Node via nvm** — `source ~/.nvm/nvm.sh && nvm install --lts`
 5. **Restart terminal** — close and reopen, or `source ~/.zshrc`
@@ -148,7 +147,7 @@ and prompts for the optional bundles.
 
 | App | Description |
 |:----|:------------|
-| `alacritty` | Terminal |
+| `iterm2` | Terminal |
 | `claude`, `claude-code` | AI apps |
 | `karabiner-elements` | Keyboard remapping (caps-lock → ctrl, plus vim-style hjkl arrows) |
 | `font-jetbrains-mono-nerd-font` | Nerd font |
@@ -182,7 +181,7 @@ Empty — reserved for future additions. Install later if needed: `brew bundle -
 
 Catppuccin Mocha throughout:
 
-- **Alacritty** — `.config/alacritty/themes/catppuccin_mocha.toml`, imported by `.alacritty.toml`
+- **iTerm2** — preset imported by `scripts/macos-setup.sh` from `scripts/iterm2.plist`; activate post-install (Profiles → Colors → Color Presets → catppuccin-mocha)
 - **tmux** — `catppuccin/tmux` plugin loaded by TPM, flavor = `mocha`
 - **macOS** — system-level dark mode + graphite accent enabled by `macos-setup.sh`
 

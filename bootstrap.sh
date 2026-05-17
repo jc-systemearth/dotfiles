@@ -615,15 +615,6 @@ fi
 # user.name/email/signingkey and github.user via `git config --global`.
 configure_git
 
-# Set custom Alacritty icon (macOS only; requires fileicon from Brewfile)
-ALACRITTY_ICON_SRC="$HOME/Alacritty.tiff"
-ALACRITTY_APP="/Applications/Alacritty.app"
-if [ "$MACOS" -gt 0 ] && [ -d "$ALACRITTY_APP" ] && [ -f "$ALACRITTY_ICON_SRC" ] && command -v fileicon &>/dev/null; then
-  log "Setting custom Alacritty icon"
-  fileicon set "$ALACRITTY_APP" "$ALACRITTY_ICON_SRC" 2>/dev/null || \
-    log "fileicon set failed (re-run manually if needed)"
-fi
-
 # Apply macOS defaults (dock, Finder, hotkeys, etc.). Runs post-Brewfile so
 # app-specific defaults (Transmission, ProtonVPN, iTerm2 theme) resolve
 # against installed apps. Backs current defaults up to ~/Desktop first.
@@ -670,14 +661,10 @@ echo "     Step 5: Switch dotfiles remote from HTTPS to SSH (so 'config push' wo
 echo "       config remote set-url origin git@github.com:$STRAP_GITHUB_USER/dotfiles.git"
 echo "       config remote -v   # verify it now shows git@github.com"
 echo ""
-echo "  2. SETUP ALACRITTY"
-echo "  ──────────────────"
+echo "  2. APPLY CATPPUCCIN MOCHA THEME IN iTERM2"
+echo "  ─────────────────────────────────────────"
 echo ""
-echo "     Migrate config to latest format:"
-echo "       alacritty migrate"
-echo ""
-echo "     Apply Catppuccin Mocha:"
-echo "       iTerm2 → Settings → Profiles → Colors → Color Presets → catppuccin-mocha"
+echo "     iTerm2 → Settings → Profiles → Colors → Color Presets → catppuccin-mocha"
 echo ""
 echo "  3. INSTALL TMUX PLUGINS"
 echo "  ───────────────────────"
