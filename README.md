@@ -79,7 +79,7 @@ Things intentionally NOT done (compared to the upstream `handshou/dotfiles`):
 After bootstrap completes the script prints these 5 steps:
 
 1. **Add SSH key to GitHub** — `pbcopy < ~/.ssh/id_ed25519.pub`, paste at https://github.com/settings/ssh/new, test with `ssh -T git@github.com`, then switch the dotfiles remote: `config remote set-url origin git@github.com:<you>/dotfiles.git`
-2. **Set up Alacritty** — `alacritty migrate`, and apply Catppuccin Mocha via iTerm2 → Settings → Profiles → Colors → Color Presets → `catppuccin-mocha`
+2. **Set up Alacritty** — `alacritty migrate` to update config to the latest format
 3. **Install tmux plugins** — open tmux, hit `prefix + I` (Ctrl+a, then Shift+I) to install via TPM
 4. **Install Node via nvm** — `source ~/.nvm/nvm.sh && nvm install --lts`
 5. **Restart terminal** — close and reopen, or `source ~/.zshrc`
@@ -113,7 +113,6 @@ current defaults to `~/Desktop/macos-defaults-<timestamp>.txt` first.
 | Dock & Mission Control | No recent apps, all 4 hot corners disabled, Dock icons of hidden apps translucent |
 | Networking | Auto-DHCP for Ethernet |
 | TextEdit | Plain text mode, UTF-8 |
-| iTerm2 | Imports `catppuccin-mocha` colortheme |
 
 Run manually after edits:
 ```bash
@@ -137,10 +136,10 @@ and prompts for the optional bundles.
 | App | Description |
 |:----|:------------|
 | `neovim` | Editor (vanilla — no bundled config) |
-| `deno`, `pnpm` | JS/TS runtimes (Node comes via `nvm`) |
+| `pnpm` | Node package manager (Node comes via `nvm`) |
 | `python@3.11`, `python-tk` | Python |
-| `rustup`, `goenv` | Language version managers |
-| `tmux`, `tpm` | Terminal multiplexer + plugin manager |
+| `rustup` | Rust toolchain manager |
+| `tmux` | Terminal multiplexer (TPM installed via dotfiles) |
 | `ripgrep`, `fzf`, `tree`, `chafa`, `gh` | CLI utilities |
 | `pgcli` | Postgres CLI |
 | `stylua` | Lua formatter |
@@ -149,13 +148,10 @@ and prompts for the optional bundles.
 
 | App | Description |
 |:----|:------------|
-| `iterm2`, `alacritty` | Terminals |
-| `firefox`, `zen` | Browsers |
-| `alfred`, `obsidian`, `claude`, `claude-code` | Productivity / AI |
-| `1password`, `1password-cli` | Password manager |
+| `alacritty` | Terminal |
+| `claude`, `claude-code` | AI apps |
 | `karabiner-elements` | Keyboard remapping (caps-lock → ctrl, plus vim-style hjkl arrows) |
 | `font-jetbrains-mono-nerd-font` | Nerd font |
-| `hiddenbar`, `stats` | Menu bar utilities |
 
 ### App Store (`Brewfile`, via `mas`)
 
@@ -163,10 +159,6 @@ and prompts for the optional bundles.
 |:----|:---|
 | Magnet | 441258766 |
 | Dropover | 1355679052 |
-| 1Password for Safari | 1569813296 |
-| Keys for Safari | 1494642810 |
-| Refined GitHub | 1519867270 |
-| Wappalyzer | 1520333300 |
 
 ### Work (`Brewfile.work`)
 
@@ -184,8 +176,7 @@ and prompts for the optional bundles.
 
 ### Optional (`Brewfile.optional`)
 
-`rawtherapee`, `gimp`, `subler`, `transmission`, `love`, `hazel`, `discord`, `telegram`.
-Skip during bootstrap (default), install later if wanted: `brew bundle --file=Brewfile.optional`.
+Empty — reserved for future additions. Install later if needed: `brew bundle --file=Brewfile.optional`.
 
 ## Theme
 
@@ -193,7 +184,6 @@ Catppuccin Mocha throughout:
 
 - **Alacritty** — `.config/alacritty/themes/catppuccin_mocha.toml`, imported by `.alacritty.toml`
 - **tmux** — `catppuccin/tmux` plugin loaded by TPM, flavor = `mocha`
-- **iTerm2** — preset imported by `scripts/macos-setup.sh`; activate manually after install (see post-install step 2)
 - **macOS** — system-level dark mode + graphite accent enabled by `macos-setup.sh`
 
 ## Karabiner
