@@ -46,9 +46,9 @@ STDIN_FILE_DESCRIPTOR=0
 [ -t "$STDIN_FILE_DESCRIPTOR" ] && STRAP_INTERACTIVE=1
 # Pre-populate from existing git config (for re-runs).
 # Single identity only (work Mac); no personal/work split.
-[ -z "$STRAP_GIT_NAME" ] && STRAP_GIT_NAME="$(git config --global user.name 2>/dev/null)"
-[ -z "$STRAP_GIT_EMAIL" ] && STRAP_GIT_EMAIL="$(git config --global user.email 2>/dev/null)"
-[ -z "$STRAP_GITHUB_USER" ] && STRAP_GITHUB_USER="$(git config --global github.user 2>/dev/null)"
+[ -z "$STRAP_GIT_NAME" ] && STRAP_GIT_NAME="$(git config --global user.name 2>/dev/null || true)"
+[ -z "$STRAP_GIT_EMAIL" ] && STRAP_GIT_EMAIL="$(git config --global user.email 2>/dev/null || true)"
+[ -z "$STRAP_GITHUB_USER" ] && STRAP_GITHUB_USER="$(git config --global github.user 2>/dev/null || true)"
 
 # Interactive prompts for required variables (works on fresh macOS without gum)
 prompt_if_missing() {
