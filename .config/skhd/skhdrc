@@ -1,0 +1,3 @@
+# skhd removed from this dotfiles setup (paired with yabai, which is also
+# removed). Magnet handles window snapping shortcuts now. Delete this file
+# and the .config/skhd directory whenever you like.

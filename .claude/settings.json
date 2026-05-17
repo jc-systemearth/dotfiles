@@ -1,0 +1,17 @@
+{
+	"alwaysThinkingEnabled": true,
+	"hooks": {
+		"Notification": [
+			{
+				"matcher": "",
+				"hooks": [
+					{
+						"type": "command",
+						"command": "osascript -e 'display notification \"Claude needs permission to continue\" with title \"Claude Code\" sound name \"Glass\"'",
+						"statusMessage": "Sending macOS notification..."
+					}
+				]
+			}
+		]
+	}
+}

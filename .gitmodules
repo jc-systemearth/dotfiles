@@ -1,0 +1,4 @@
+# Submodules removed. The previous .config/nvim submodule pointed at
+# handshou/init.lua; we use vanilla nvim now. Re-add an [submodule] block
+# here later if you want to start tracking your own nvim config as a
+# submodule of this dotfiles repo.

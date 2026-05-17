@@ -1,0 +1,12 @@
+[credential]
+	helper = osxkeychain
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	allowedSignersFile = ~/.ssh/allowed_signers
+[commit]
+	gpgsign = true
+[tag]
+	gpgsign = true
+[alias]
+	clone-for-worktrees = "!sh $HOME/scripts/git-clone-bare-for-worktrees.sh"

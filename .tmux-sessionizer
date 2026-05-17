@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Hydrates a fresh tmux session: opens a 'work' and a 'scratch' window,
+# then drops the first pane into `vim .`. Customize freely.
+tmux neww -n work
+tmux neww -n scratch
+
+vim .
+clear
