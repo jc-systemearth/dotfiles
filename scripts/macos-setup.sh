@@ -213,4 +213,12 @@ defaults write com.apple.TextEdit RichText -int 0
 defaults write com.apple.TextEdit PlainTextEncoding -int 4
 defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4
 
+###############################################################################
+# iTerm2 colortheme                                                           #
+###############################################################################
+
+# Import catppuccin-mocha colortheme from plist.
+# After install: iTerm2 → Settings → Profiles → Colors → Color Presets… → catppuccin-mocha
+defaults import com.googlecode.iterm2 "$HOME/scripts/iterm2.plist"
+
 printf "\nDone. Some changes (Dock, Finder, menu bar) take effect after\nkillall Dock Finder cfprefsd, or a log out / log back in.\n"
